@@ -1,1 +1,1 @@
-postgresql://:@:/?sslmode=require
+postgresql://iphone_empire_user:Y2r03mjB35564CugoIE2uDYcY37VewIu@dpg-d52pg6muk2gs73aim2m0-a/iphone_empire
