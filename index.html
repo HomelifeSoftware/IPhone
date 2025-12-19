@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Empire Store - Premium Apple Devices</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showSection('home'); return false;">
+                <img src="logo.jpg" alt="iPhone Empire Store logo" class="logo-image">
+                <span>iPhone Empire Store</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showSection('home'); return false;">Home</a></li>
+                <li><a href="#" onclick="showSection('products'); return false;">Products</a></li>
+                <li><a href="#" onclick="showSection('orders'); return false;">Orders</a></li>
+                <li><a href="admin-login.html" id="adminLink">Login</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                    <span class="material-icons dark-icon">dark_mode</span>
+                    <span class="material-icons light-icon">light_mode</span>
+                </button>
+                <div class="cart-icon" onclick="openCart()">
+                    <span class="material-icons">shopping_cart</span>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span class="material-icons">menu</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="homeSection">
+            <!-- Hero background slideshow -->
+            <div class="hero-media-slider">
+                <div class="hero-slide active" style="background-image: url('IMG-20251218-WA0000.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('IMG-20251218-WA0001.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('IMG-20251218-WA0002.jpg');"></div>
+                <div class="hero-slide video-slide">
+                    <video src="VID-20251218-WA0006.mp4" autoplay muted loop playsinline></video>
+                </div>
+                <div class="hero-slide video-slide">
+                    <video src="VID-20251218-WA0007.mp4" autoplay muted loop playsinline></video>
+                </div>
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">iPhone Empire Store</h1>
+                <p class="hero-subtitle">Your Trusted Destination for Premium Apple Devices</p>
+                <a href="#" class="hero-btn" onclick="showSection('products'); return false;">Explore Products</a>
+            </div>
+        </section>
+
+        <!-- Store Description Section -->
+        <section class="store-description-section">
+            <div class="description-container">
+                <div class="description-content">
+                    <h2>Welcome to iPhone Empire Store</h2>
+                    <p class="description-text">
+                        At iPhone Empire Store, we are passionate about bringing you the latest and greatest 
+                        Apple iPhone technology. As Tanzania's premier destination for authentic iPhone devices, 
+                        we offer a comprehensive selection of models ranging from the classic iPhone 11 to the 
+                        cutting-edge iPhone 15 series.
+                    </p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><span class="material-icons">verified</span></div>
+                            <h3>Authentic Products</h3>
+                            <p>100% genuine Apple devices with official warranty</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><span class="material-icons">local_offer</span></div>
+                            <h3>Best Prices</h3>
+                            <p>Competitive pricing with exclusive discounts and offers</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><span class="material-icons">local_shipping</span></div>
+                            <h3>Fast Delivery</h3>
+                            <p>Quick and secure shipping across Tanzania</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><span class="material-icons">security</span></div>
+                            <h3>Secure Shopping</h3>
+                            <p>Safe and protected online shopping experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section" id="productsSection" style="display: none;">
+            <h2 class="section-title">Our Products</h2>
+            
+            <!-- Search & Filter Bar -->
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search iPhone models..." onkeyup="filterProducts()">
+                    <span class="search-icon material-icons">search</span>
+                </div>
+                <div class="filter-box">
+                    <select id="priceFilter" onchange="filterProducts()">
+                        <option value="all">All Prices</option>
+                        <option value="0-1000000">Under TSh 1,000,000</option>
+                        <option value="1000000-2000000">TSh 1,000,000 - 2,000,000</option>
+                        <option value="2000000-2500000">TSh 2,000,000 - 2,500,000</option>
+                        <option value="2500000+">TSh 2,500,000+</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Product Detail Section -->
+        <section class="product-detail-section" id="productDetailSection" style="display: none;">
+            <button class="back-btn" onclick="showSection('products')">← Back to Products</button>
+            <div class="product-detail-container" id="productDetailContainer">
+                <!-- Product details will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section class="orders-section" id="ordersSection" style="display: none;">
+            <h2 class="section-title">My Orders</h2>
+            <div class="orders-container" id="ordersContainer">
+                <div class="empty-orders">No orders yet. Start shopping!</div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">Shopping Cart</h2>
+            <span class="close-cart" onclick="closeCart()">×</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">Your cart is empty</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">TSh 0</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h2>Place Order</h2>
+                <p>Complete your purchase</p>
+            </div>
+            <form class="checkout-form" id="checkoutForm" onsubmit="handleCheckout(event)">
+                <div id="checkoutProductInfo" class="checkout-product-info"></div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Home Life">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="homelife@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="+255 123 456 789">
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address</label>
+                    <input type="text" id="address" required placeholder="123 Main St, City, State">
+                </div>
+                <div class="checkout-actions">
+                    <button type="button" class="btn-secondary" onclick="closeCheckout()">Cancel</button>
+                    <button type="submit" class="btn-primary">Place Order</button>
+                </div>
+                <div class="success-message" id="successMessage">
+                    <span class="material-icons">check_circle</span> Order placed successfully! Thank you for your purchase.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="productModalTitle">Add New Product</h2>
+                <span class="close-modal" onclick="closeProductModal()">×</span>
+            </div>
+            <form id="productForm" onsubmit="handleProductSubmit(event)">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" required placeholder="iPhone 15 Pro">
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Image URL</label>
+                    <input type="url" id="productImage" required placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price (TSh)</label>
+                    <input type="number" id="productPrice" required min="0" step="1" placeholder="2497500">
+                </div>
+                <div class="form-group">
+                    <label for="productDiscount">Discount (%)</label>
+                    <input type="number" id="productDiscount" min="0" max="100" step="1" placeholder="10" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" required rows="4" placeholder="Enter product description..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeProductModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon material-icons" id="toastIcon">info</span>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
