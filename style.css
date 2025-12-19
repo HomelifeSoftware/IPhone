@@ -1407,6 +1407,28 @@ body {
     transform: scale(1.2);
 }
 
+/* Confirmation Modal Styles */
+.modal-small {
+    max-width: 400px;
+}
+
+.modal-body {
+    margin-bottom: 30px;
+}
+
+.modal-body p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
 .checkout-header {
     text-align: center;
     margin-bottom: 30px;

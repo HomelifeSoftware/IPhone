@@ -241,6 +241,22 @@
         </div>
     </div>
 
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2 id="confirmTitle">Confirm Action</h2>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeConfirmModal()">Cancel</button>
+                <button type="button" class="btn-danger" id="confirmBtn" onclick="confirmAction()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Notification Toast -->
     <div class="toast" id="toast">
         <div class="toast-content">
